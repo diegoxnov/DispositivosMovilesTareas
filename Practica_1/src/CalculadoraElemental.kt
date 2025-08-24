@@ -23,9 +23,35 @@ fun Div(numero: Int, numero2: Int): Float {
 }
 
 fun main(){
-    var choice: Boolean = true
-    while(choice){
-        println("==Menú==")
-        when
-    }
+
+    val choice: Boolean = true
+    do{
+        println("==Menu==")
+        println("1. Suma")
+        println("2. Resta")
+        println("3. Multiplicacion")
+        println("4. Division")
+        println("5. Salir")
+        // 1. Leer la entrada de texto del usuario
+        val input = readLine()
+        // 2. Convertir la entrada a un Int de forma segura
+        val numero: Int? = input?.toIntOrNull()
+        when(numero) {
+            1 ->{
+                val nSuma: MutableList<Double> = mutableListOf()
+                val nAdd: Double
+
+                println("Digite los numeros a sumar o coloque fin para terminar")
+                val choice1: String = "fin"
+                while (choice1 != "fin") {
+                    nAdd = readLine()!!.toDouble()
+                    nSuma.add(nAdd)
+                    if (choice1 == "fin"){
+                        Suma(nSuma)
+                    }
+                }
+            }
+        }
+    }while(choice)
+
 }
