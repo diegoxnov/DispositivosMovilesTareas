@@ -23,5 +23,9 @@ fun Div(numero: Int, numero2: Int): Float {
 }
 
 fun main(){
-
+    var choice: Boolean = true
+    while(choice){
+        println("==Menú==")
+        when
+    }
 }
