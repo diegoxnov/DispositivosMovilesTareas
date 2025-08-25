@@ -64,7 +64,7 @@ fun main(){
                 val total = Suma()
                 println("Resultado: $total")
             }
-            2 -> {
+            3 -> {
                 val total = Mult()
                 println("Resultado: $total")
             }
