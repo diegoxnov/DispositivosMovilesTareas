@@ -16,14 +16,24 @@ fun Suma(): Double {
     return nSuma.sum()
 }
 
-fun Mult(numero:List<Double>): Double {
-
-    var resultado = 1.0
-    for(a in numero) {
+fun Mult(): Double {
+    var nMult: MutableList<Double> = mutableListOf()
+    var resultado = 0.0
+    println("Digite los numeros a multiplicar o coloque fin para terminar")
+    var choice1: String? = null
+    do{
+        choice1 = readln()
+        val valor = choice1?.toDoubleOrNull()
+        if (valor != null) {
+            nMult.add(valor)
+        }else if(choice1?.lowercase() != "fin") {
+            println("Entrada invalida. Ingrese un valor correcto")
+        }
+    }while (choice1?.lowercase() != "fin")
+    for(a in nMult) {
         resultado = a * resultado
 
     }
-
     return resultado
 }
 
@@ -52,6 +62,10 @@ fun main(){
         when(numero) {
             1 ->{
                 val total = Suma()
+                println("Resultado: $total")
+            }
+            2 -> {
+                val total = Mult()
                 println("Resultado: $total")
             }
         }
