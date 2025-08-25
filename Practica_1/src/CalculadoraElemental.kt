@@ -1,6 +1,19 @@
 
-fun Suma(numero:List<Double>): Double {
-    return numero.sum()
+fun Suma(): Double {
+    var nSuma: MutableList<Double> = mutableListOf()
+
+    println("Digite los numeros a sumar o coloque fin para terminar")
+    var choice1: String? = null
+    do{
+        choice1 = readln()
+        val valor = choice1?.toDoubleOrNull()
+        if (valor != null) {
+            nSuma.add(valor)
+        } else if(choice1?.lowercase() != "fin") {
+            println("Entrada inválida. ingrese un valor correcto")
+        }
+    }while(choice1?.lowercase() != "fin")
+    return nSuma.sum()
 }
 
 fun Mult(numero:List<Double>): Double {
@@ -38,18 +51,8 @@ fun main(){
         val numero: Int? = input?.toIntOrNull()
         when(numero) {
             1 ->{
-                val nSuma: MutableList<Double> = mutableListOf()
-                val nAdd: Double
-
-                println("Digite los numeros a sumar o coloque fin para terminar")
-                val choice1: String = "fin"
-                while (choice1 != "fin") {
-                    nAdd = readLine()!!.toDouble()
-                    nSuma.add(nAdd)
-                    if (choice1 == "fin"){
-                        Suma(nSuma)
-                    }
-                }
+                val total = Suma()
+                println("Resultado: $total")
             }
         }
     }while(choice)
