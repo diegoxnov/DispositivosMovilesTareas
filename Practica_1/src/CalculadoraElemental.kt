@@ -54,8 +54,19 @@ fun Rest() {
 
 }
 
-fun Div(numero: Int, numero2: Int): Float {
-    return(numero/numero2).toFloat()
+fun Div() {
+    println("Digite los 2 numeros a dividir")
+    val valor1 = readln()
+    val valor2 = readln()
+    val vConvert1 = valor1.toFloatOrNull()
+    val vConvert2 = valor2.toFloatOrNull()
+
+    if (vConvert1 != null && vConvert2 != null) {
+        val result = vConvert1 / vConvert2
+        println("Resultado: $result")
+    } else {
+        println("Caracteres invalidos")
+    }
 }
 
 fun main(){
@@ -84,6 +95,14 @@ fun main(){
                 val total = Mult()
                 println("Resultado: $total")
             }
+            4 -> {
+                Div()
+            }
+            5 -> {
+                println("Fin del programa")
+                return
+            }
+            else -> println("Ingrese una opcion valida")
         }
     }while(choice)
 
