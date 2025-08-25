@@ -30,11 +30,30 @@ fun Juego(choice: String, pc: String): String {
     }
 }
 
-fun Eleccion(Eleccion: Int): String {
+fun EleccionUser(Eleccion: Int): String {
     when (Eleccion) {
         1 -> return "Piedra"
         2 -> return "Papel"
         3 -> return "Tijera"
         else -> return "Escoge una opci[on correcta"
     }
+}
+
+fun main(){
+    println("Escoge una de las opciones validas")
+    var captura: String
+    do{
+
+        println("1. Piedra")
+        println("2. Papel")
+        println("3. Tijera")
+        val Eleccion = readLine()
+        val eleccion = Eleccion?.toIntOrNull() ?:0 //Asignamos 0 si la conversion de int falla
+        captura = EleccionUser(eleccion)
+
+    }while (captura == "Escoge una opci[on correcta")
+
+    val eleccionPc = Aleatorio()
+    println("La computadora escogio: $eleccionPc ")
+    println("El resultado es: ${Juego(captura,eleccionPc)}")
 }
