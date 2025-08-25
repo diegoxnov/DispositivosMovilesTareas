@@ -37,8 +37,21 @@ fun Mult(): Double {
     return resultado
 }
 
-fun Rest(numero: Float, numero2: Float): Float {
-    return numero - numero2
+fun Rest() {
+    println("Digite los 2 numeros a restar")
+    val valor1 = readln()
+    val valor2 = readln()
+    val vConvert1 = valor1.toFloatOrNull()
+    val vConvert2 = valor2.toFloatOrNull()
+
+    if (vConvert1 != null && vConvert2 != null) {
+        val result = vConvert1 - vConvert2
+        println("Resultado: $result")
+    } else {
+        println("Caracteres invalidos")
+
+    }
+
 }
 
 fun Div(numero: Int, numero2: Int): Float {
@@ -63,6 +76,9 @@ fun main(){
             1 ->{
                 val total = Suma()
                 println("Resultado: $total")
+            }
+            2 ->{
+                Rest()
             }
             3 -> {
                 val total = Mult()
