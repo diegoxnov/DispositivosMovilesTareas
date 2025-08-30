@@ -1,3 +1,5 @@
+//Autor: Diego Nova
+//Adivinar número Aleatorio
 
 fun main() {
     // Genera un número aleatorio entre 1 y 30.

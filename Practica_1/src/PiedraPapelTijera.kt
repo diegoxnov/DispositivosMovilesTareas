@@ -1,3 +1,5 @@
+//Autor: Diego Nova
+//Juego piedra papel o tijera
 
 
 fun Aleatorio(): String {

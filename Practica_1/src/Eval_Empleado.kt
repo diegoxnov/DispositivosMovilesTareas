@@ -1,3 +1,5 @@
+//Puntaje y Evaluación de empleado
+//Diego Nova
 import kotlin.Float
 
 fun CalculoSalario(puntuacion: Float, salario: Float): Float {
