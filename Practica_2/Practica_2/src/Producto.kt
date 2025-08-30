@@ -2,16 +2,13 @@
 // Desarrollo clase para Producto
 
 class Producto(var precio:Float, var descuento: Int){
-    fun CalculoDescuento():Float{
-        var descuento2 = this.precio * (descuento)/100
-        var precioFinal = this.precio - descuento2
-        return precioFinal
-    }
+    val precioConDescuento: Float
+        get() = precio - (precio * descuento/100)
+
 }
 
 fun main(){
     val producto = Producto(100f,35)
-    val precioTotal = producto.CalculoDescuento()
-    println(precioTotal)
+    println("El precio es ${producto.precio} y el precio con descuento es: ${producto.precioConDescuento}")
 }
 
