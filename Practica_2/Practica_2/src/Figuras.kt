@@ -26,11 +26,24 @@ class Circulo(): Figuras(){
         get() = 2 * radio * 3.1415f
 }
 
-
+class Cuadrado(): Figuras(){
+    var lado: Float = 0.0f
+    constructor(lado: Float): this(){
+        this.lado = lado
+    }
+    override val area: Float
+        get() = lado * lado
+    override val perimetro: Float
+        get() = lado * 4
+}
 
 fun main(){
 
+    println("Circulo: ")
     val circulo = Circulo(5f)
     circulo.imprimirResultados()
 
+    println("Cuadrado: ")
+    val cuadrado = Cuadrado(5f)
+    cuadrado.imprimirResultados()
 }
