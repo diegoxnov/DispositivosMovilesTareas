@@ -37,6 +37,20 @@ class Cuadrado(): Figuras(){
         get() = lado * 4
 }
 
+class Rectangulo(): Figuras(){
+    var altura: Float = 0.0f
+    var base: Float = 0.0f
+    constructor(altura: Float, base: Float): this(){
+        this.altura = altura
+        this.base = base
+    }
+
+    override val area: Float
+        get() = base * altura
+    override val perimetro: Float
+        get() = 2 *(base+altura)
+}
+
 fun main(){
 
     println("Circulo: ")
@@ -46,4 +60,10 @@ fun main(){
     println("Cuadrado: ")
     val cuadrado = Cuadrado(5f)
     cuadrado.imprimirResultados()
+
+
+    println("Rectangulo: ")
+    var rectangulo = Rectangulo(5f, 3f)
+    rectangulo.imprimirResultados()
+
 }
