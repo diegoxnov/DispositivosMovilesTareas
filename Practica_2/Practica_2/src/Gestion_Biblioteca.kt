@@ -41,13 +41,13 @@ class Biblioteca(): ibiblioteca  {
 
     private val listaDeLibro = mutableListOf<libro>()
     private val listaDeLibroDisponibles = mutableListOf<libro>()
-    private val listaDeLibroDisponiblesPrestado = mutableListOf<libro>()
+    private val listaDeLibroPrestado = mutableListOf<libro>()
     private val listaDeLibroRevista = mutableListOf<Revista>()
     private val listaDeLibroRevistaDisponibles = mutableListOf<Revista>()
-    private val listaDeLibroRevistaPrestado = mutableListOf<Revista>()
+    private val listaDeRevistaPrestado = mutableListOf<Revista>()
     private val listaDeUsuarios = mutableListOf<Usuario>()
+
     private val listaDeMaterialesPrestados = mutableListOf<Material>()
-    private val listaDeMaterialesDisponibles = mutableListOf<Material>()
     private val registroPrestamos = mutableMapOf<Material,Usuario>()
 
 
@@ -119,19 +119,22 @@ class Biblioteca(): ibiblioteca  {
     override fun PrestamoLibro(){
         var usuario: Usuario
         var lbro: libro
-        if(listaDeMaterialesDisponibles.isEmpty() || listaDeUsuarios.isEmpty()){
+        if(listaDeLibroDisponibles.isEmpty() || listaDeUsuarios.isEmpty()){
             println("usuarios y lista de libros vacio")
         } else{
+
             println("Escoge uno de los usuarios")
             listaDeUsuarios.forEachIndexed {
                 index, x ->
                 println("$index -> ${x.nombre} ${x.apellido}")
             }
+
             var x = readLine()?.toIntOrNull() ?: 0
-            if(x != 0 && x in 1..listaDeUsuarios.size){
+            if(x in listaDeUsuarios.indices){
                 usuario = listaDeUsuarios[x]
             }else{
                 println("usuario escogido no existe")
+                return
             }
 
             listaDeLibroDisponibles.forEachIndexed {
@@ -139,13 +142,17 @@ class Biblioteca(): ibiblioteca  {
                 println("$index -> ${x.titulo}")
             }
             var y = readLine()?.toIntOrNull() ?: 0
-            if(y != 0 && y in 1..listaDeUsuarios.size){
+            if(y in listaDeLibroDisponibles.indices){
                 lbro = listaDeLibroDisponibles[y]
             }else{
                 println("libro escogido no existe")
+                return
             }
 
-
+            listaDeLibroDisponibles.remove(lbro)
+            listaDeLibroPrestado.add(lbro)
+            registroPrestamos[lbro] = usuario
+            println("se presto el libro: ${lbro.titulo} a ${registroPrestamos[lbro]?.nombre}")
         }
     }
 
@@ -165,5 +172,10 @@ class Biblioteca(): ibiblioteca  {
 }
 
 fun main(){
+    println("Introduce Crear libro")
+    var biblio = Biblioteca()
+    biblio.RegistrarMat(1)
+    biblio.RegistrarUsuario()
+    biblio.PrestamoLibro()
 
 }
