@@ -228,7 +228,26 @@ class Biblioteca(): ibiblioteca  {
             }
             2 -> {
                 println("Selecciona la revista")
-
+                var revist: Revista
+                if (!listaDeRevistaPrestado.isEmpty()){
+                    println("Selecciona la revista")
+                    listaDeRevistaPrestado.forEachIndexed {
+                        index,x ->
+                        println("$index -> ${x.titulo}")
+                    }
+                    var x = readLine()?.toIntOrNull() ?: 0
+                    if(x in listaDeRevistaPrestado.indices){
+                        revist = listaDeRevistaPrestado[x]
+                        listaDeRevistaPrestado.remove(revist)
+                        listaDeRevistaDisponibles.add(revist)
+                        registroPrestamos.remove(revist)
+                        println("Se devolvio el libro ${registroPrestamos[revist]?.nombre}")
+                    }else{
+                        println("Opvion no valida")
+                    }
+                }else{
+                    println("No hay revistas prestadas")
+                }
             }
             else -> {
                 println("opcion invalida")
