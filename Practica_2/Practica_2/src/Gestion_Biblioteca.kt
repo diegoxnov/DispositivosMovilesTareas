@@ -1,5 +1,3 @@
-import kotlin.math.atan
-
 abstract class Material(val titulo: String, val autor: String, val anioPublicacion: String){
     abstract fun mostrarDetalles()
 }
@@ -30,7 +28,7 @@ class Usuario(var nombre: String, var apellido: String, var edad: Int){
 }
 
 interface ibiblioteca{
-    fun RegistrarMat()
+    fun RegistrarMat(eleccion: Int)
     fun RegistrarUsuario()
     fun Prestamo()
     fun Devolucion()
@@ -38,7 +36,97 @@ interface ibiblioteca{
     fun MostrarMaterialesReservados()
 }
 
+class Biblioteca(): ibiblioteca  {
 
+    private val listaDeMateriales = mutableListOf<Material>()
+    private val listaDeUsuarios = mutableListOf<Usuario>()
+    private val listaDeMaterialesPrestados = mutableListOf<Material>()
+    private val listaDeMaterialesDisponibles = mutableListOf<Material>()
+    private val registroPrestamos = mutableMapOf<Material,Usuario>()
+
+
+    override fun RegistrarMat(eleccion: Int){
+
+        when (eleccion){
+            1 -> {
+                println("Resgistrar Libro")
+                println("Introduce el titulo: ")
+                val titulo = readLine() ?: "sin titulo"
+                println("Introduce el autor")
+                val autor = readLine() ?: "sin autor"
+                println("Introduce anio publicacion")
+                val anioPublicacion = readLine() ?: "sin Anio Publicacion"
+                println("Introduce genero")
+                val genero = readLine() ?: "sin genero"
+                println("Introduce numero pag")
+                val numeroPag = readln().toIntOrNull() ?: 0
+
+                val nuevoLibro = libro(genero, numeroPag, titulo, autor, anioPublicacion)
+                listaDeMateriales.add(nuevoLibro)
+                println("Libro: $titulo Registrado")
+
+            }
+            2 -> {
+                println("Registrar Revista")
+                println("Introduce el título: ")
+                val titulo = readln()
+                println("Introduce el autor/colaborador: ")
+                val autor = readln()
+                println("Introduce el año de publicación: ")
+                val anio = readln()
+                println("Introduce el ISSN: ")
+                val issn = readln()
+                println("Introduce el volumen: ")
+                val volumen = readln()
+                println("Introduce el número de la revista: ")
+                val numero = readln().toIntOrNull() ?: 0
+                println("Introduce la editorial: ")
+                val editorial = readln()
+
+                val nuevaRevis = Revista(issn, volumen, numero, editorial, autor, anio, titulo)
+
+                listaDeMateriales.add(nuevaRevis)
+                println("Revista: $titulo Registrado")
+            }
+            else -> {
+                println("Opcion no vlida")
+            }
+        }
+
+    }
+    override fun RegistrarUsuario(){
+        println("Registrar Usuarios")
+        println("Introduce el Nombre: ")
+        val nombre = readln()
+        println("Introduce el Apellido ")
+        val apellido = readln()
+        println("Introduce la edad ")
+        val anio = readln().toIntOrNull() ?: 0
+
+        val nuevoUser = Usuario(nombre,apellido, anio)
+        listaDeUsuarios.add(nuevoUser)
+        println("Registro de usuario extiso")
+
+    }
+    override fun Prestamo(){
+        if(listaDeMaterialesDisponibles.isEmpty() || listaDeUsuarios.isEmpty()){
+            println("usuarios y lista de libros vacio")
+        } else{
+            listaDeUsuarios.forEachIndexed {
+
+            }
+        }
+    }
+    override fun Devolucion(){
+
+    }
+    override fun MostrarMaterialesDisponibles(){
+
+    }
+    override fun MostrarMaterialesReservados(){
+
+    }
+}
 
 fun main(){
 
