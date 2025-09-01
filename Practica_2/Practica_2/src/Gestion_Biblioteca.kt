@@ -43,11 +43,9 @@ class Biblioteca(): ibiblioteca  {
     private val listaDeLibroDisponibles = mutableListOf<libro>()
     private val listaDeLibroPrestado = mutableListOf<libro>()
     private val listaDeLibroRevista = mutableListOf<Revista>()
-    private val listaDeLibroRevistaDisponibles = mutableListOf<Revista>()
+    private val listaDeRevistaDisponibles = mutableListOf<Revista>()
     private val listaDeRevistaPrestado = mutableListOf<Revista>()
     private val listaDeUsuarios = mutableListOf<Usuario>()
-
-    private val listaDeMaterialesPrestados = mutableListOf<Material>()
     private val registroPrestamos = mutableMapOf<Material,Usuario>()
 
 
@@ -93,7 +91,7 @@ class Biblioteca(): ibiblioteca  {
                 val nuevaRevis = Revista(issn, volumen, numero, editorial, autor, anio, titulo)
 
                 listaDeLibroRevista.add(nuevaRevis)
-                listaDeLibroRevistaDisponibles.add(nuevaRevis)
+                listaDeRevistaDisponibles.add(nuevaRevis)
                 println("Revista: $titulo Registrado")
             }
             else -> {
@@ -157,7 +155,44 @@ class Biblioteca(): ibiblioteca  {
     }
 
     override fun PrestamoRevista() {
+        var usuario: Usuario
+        var revista: Revista
+        if(listaDeRevistaDisponibles.isEmpty() || listaDeUsuarios.isEmpty()){
+            println("usuarios y lista de revista vacios")
+        } else{
 
+            println("Escoge uno de los usuarios")
+            listaDeUsuarios.forEachIndexed {
+                    index, x ->
+                println("$index -> ${x.nombre} ${x.apellido}")
+            }
+
+            var x = readLine()?.toIntOrNull() ?: 0
+            if(x in listaDeUsuarios.indices){
+                usuario = listaDeUsuarios[x]
+            }else{
+                println("usuario escogido no existe")
+                return
+            }
+
+            println("escoge una revista")
+            listaDeRevistaDisponibles.forEachIndexed {
+                    index, x ->
+                println("$index -> ${x.titulo}")
+            }
+            var y = readLine()?.toIntOrNull() ?: 0
+            if(y in listaDeRevistaDisponibles.indices){
+                revista = listaDeRevistaDisponibles[y]
+            }else{
+                println("revista escogida no existe")
+                return
+            }
+
+            listaDeRevistaDisponibles.remove(revista)
+            listaDeRevistaPrestado.add(revista)
+            registroPrestamos[revista] = usuario
+            println("se presto la revista: ${revista.titulo} a ${registroPrestamos[revista]?.nombre}")
+        }
     }
 
     override fun Devolucion(){
@@ -177,5 +212,9 @@ fun main(){
     biblio.RegistrarMat(1)
     biblio.RegistrarUsuario()
     biblio.PrestamoLibro()
+
+    biblio.RegistrarMat(2)
+    biblio.RegistrarUsuario()
+    biblio.PrestamoRevista()
 
 }
