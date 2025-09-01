@@ -30,7 +30,8 @@ class Usuario(var nombre: String, var apellido: String, var edad: Int){
 interface ibiblioteca{
     fun RegistrarMat(eleccion: Int)
     fun RegistrarUsuario()
-    fun Prestamo()
+    fun PrestamoLibro()
+    fun PrestamoRevista()
     fun Devolucion()
     fun MostrarMaterialesDisponibles()
     fun MostrarMaterialesReservados()
@@ -38,7 +39,12 @@ interface ibiblioteca{
 
 class Biblioteca(): ibiblioteca  {
 
-    private val listaDeMateriales = mutableListOf<Material>()
+    private val listaDeLibro = mutableListOf<libro>()
+    private val listaDeLibroDisponibles = mutableListOf<libro>()
+    private val listaDeLibroDisponiblesPrestado = mutableListOf<libro>()
+    private val listaDeLibroRevista = mutableListOf<Revista>()
+    private val listaDeLibroRevistaDisponibles = mutableListOf<Revista>()
+    private val listaDeLibroRevistaPrestado = mutableListOf<Revista>()
     private val listaDeUsuarios = mutableListOf<Usuario>()
     private val listaDeMaterialesPrestados = mutableListOf<Material>()
     private val listaDeMaterialesDisponibles = mutableListOf<Material>()
@@ -62,7 +68,8 @@ class Biblioteca(): ibiblioteca  {
                 val numeroPag = readln().toIntOrNull() ?: 0
 
                 val nuevoLibro = libro(genero, numeroPag, titulo, autor, anioPublicacion)
-                listaDeMateriales.add(nuevoLibro)
+                listaDeLibro.add(nuevoLibro)
+                listaDeLibroDisponibles.add(nuevoLibro)
                 println("Libro: $titulo Registrado")
 
             }
@@ -85,7 +92,8 @@ class Biblioteca(): ibiblioteca  {
 
                 val nuevaRevis = Revista(issn, volumen, numero, editorial, autor, anio, titulo)
 
-                listaDeMateriales.add(nuevaRevis)
+                listaDeLibroRevista.add(nuevaRevis)
+                listaDeLibroRevistaDisponibles.add(nuevaRevis)
                 println("Revista: $titulo Registrado")
             }
             else -> {
@@ -108,15 +116,43 @@ class Biblioteca(): ibiblioteca  {
         println("Registro de usuario extiso")
 
     }
-    override fun Prestamo(){
+    override fun PrestamoLibro(){
+        var usuario: Usuario
+        var lbro: libro
         if(listaDeMaterialesDisponibles.isEmpty() || listaDeUsuarios.isEmpty()){
             println("usuarios y lista de libros vacio")
         } else{
+            println("Escoge uno de los usuarios")
             listaDeUsuarios.forEachIndexed {
-
+                index, x ->
+                println("$index -> ${x.nombre} ${x.apellido}")
             }
+            var x = readLine()?.toIntOrNull() ?: 0
+            if(x != 0 && x in 1..listaDeUsuarios.size){
+                usuario = listaDeUsuarios[x]
+            }else{
+                println("usuario escogido no existe")
+            }
+
+            listaDeLibroDisponibles.forEachIndexed {
+                index, x ->
+                println("$index -> ${x.titulo}")
+            }
+            var y = readLine()?.toIntOrNull() ?: 0
+            if(y != 0 && y in 1..listaDeUsuarios.size){
+                lbro = listaDeLibroDisponibles[y]
+            }else{
+                println("libro escogido no existe")
+            }
+
+
         }
     }
+
+    override fun PrestamoRevista() {
+
+    }
+
     override fun Devolucion(){
 
     }
