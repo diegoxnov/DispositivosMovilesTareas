@@ -197,9 +197,52 @@ class Biblioteca(): ibiblioteca  {
 
     override fun Devolucion(){
 
+        println("Devolver")
+        println("1. libro")
+        println("2. revista")
+        var eleccion = readLine()?.toIntOrNull() ?: 0
+        when (eleccion) {
+            1 ->{
+                var lbro: libro
+                if(listaDeLibroPrestado.isEmpty()){
+                    println("Selecciona el libro")
+                    listaDeLibroPrestado.forEachIndexed {
+                            index, x ->
+                        println("$index -> ${x.titulo}")
+                    }
+                    var x = readLine()?.toIntOrNull() ?: 0
+                    if(x in listaDeLibroDisponibles.indices){
+                        lbro = listaDeLibroDisponibles[x]
+
+                        listaDeLibroPrestado.remove(lbro)
+                        println("se devolvio el libro ${registroPrestamos[lbro]?.nombre}")
+                        registroPrestamos.remove(lbro)
+                        listaDeLibroDisponibles.add(lbro)
+                    }else{
+                        println("Opción no válida")
+                    }
+                }else{
+                    println("No hay libros prestados")
+                }
+
+            }
+            2 -> {
+                println("Selecciona la revista")
+
+            }
+            else -> {
+                println("opcion invalida")
+            }
+        }
+
     }
     override fun MostrarMaterialesDisponibles(){
-
+        println("Estos son los libros y revistas disponibles")
+        println("libros")
+        listaDeLibroDisponibles.forEach {
+            x ->
+            println("${x.titulo} ${x.autor} ${x.genero}")
+        }
     }
     override fun MostrarMaterialesReservados(){
 
@@ -211,10 +254,12 @@ fun main(){
     var biblio = Biblioteca()
     biblio.RegistrarMat(1)
     biblio.RegistrarUsuario()
+    biblio.MostrarMaterialesDisponibles()
     biblio.PrestamoLibro()
 
     biblio.RegistrarMat(2)
     biblio.RegistrarUsuario()
     biblio.PrestamoRevista()
+
 
 }
