@@ -204,15 +204,15 @@ class Biblioteca(): ibiblioteca  {
         when (eleccion) {
             1 ->{
                 var lbro: libro
-                if(listaDeLibroPrestado.isEmpty()){
+                if(!listaDeLibroPrestado.isEmpty()){
                     println("Selecciona el libro")
                     listaDeLibroPrestado.forEachIndexed {
                             index, x ->
                         println("$index -> ${x.titulo}")
                     }
                     var x = readLine()?.toIntOrNull() ?: 0
-                    if(x in listaDeLibroDisponibles.indices){
-                        lbro = listaDeLibroDisponibles[x]
+                    if(x in listaDeLibroPrestado.indices){
+                        lbro = listaDeLibroPrestado[x]
 
                         listaDeLibroPrestado.remove(lbro)
                         println("se devolvio el libro ${registroPrestamos[lbro]?.nombre}")
@@ -245,7 +245,12 @@ class Biblioteca(): ibiblioteca  {
         }
     }
     override fun MostrarMaterialesReservados(){
-
+        println("=======Mostrar los materiales Prestados======")
+        listaDeLibroPrestado.forEach {
+            x ->
+            println("${x.titulo} ${x.autor} ${x.genero}")
+        }
+        println("=====FIN DE MATS PRESTADOS=====")
     }
 }
 
@@ -256,6 +261,12 @@ fun main(){
     biblio.RegistrarUsuario()
     biblio.MostrarMaterialesDisponibles()
     biblio.PrestamoLibro()
+    println("====mostrar libros disponibles=====")
+    biblio.MostrarMaterialesReservados()
+    println("====================")
+    biblio.Devolucion()
+    println("==================")
+    biblio.MostrarMaterialesReservados()
 // FALTA PROBAR LA DEVCOLUCION SI FUNCIONA O NO
     biblio.RegistrarMat(2)
     biblio.RegistrarUsuario()
