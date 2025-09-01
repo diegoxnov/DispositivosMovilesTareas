@@ -256,7 +256,7 @@ fun main(){
     biblio.RegistrarUsuario()
     biblio.MostrarMaterialesDisponibles()
     biblio.PrestamoLibro()
-
+// FALTA PROBAR LA DEVCOLUCION SI FUNCIONA O NO
     biblio.RegistrarMat(2)
     biblio.RegistrarUsuario()
     biblio.PrestamoRevista()
