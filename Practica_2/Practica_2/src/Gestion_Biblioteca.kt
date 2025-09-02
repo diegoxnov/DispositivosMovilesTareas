@@ -1,5 +1,8 @@
+// DIEGO NOVA
+// GESTION DE BIBLIOTECA
+
 abstract class Material(val titulo: String, val autor: String, val anioPublicacion: String){
-    abstract fun mostrarDetalles()
+    abstract fun mostrarDetalles() //clase abstracta para mostar los detlles
 }
 
 class libro(var genero: String, var numeroPag: Int, titulo: String,
@@ -10,7 +13,7 @@ class libro(var genero: String, var numeroPag: Int, titulo: String,
         println("Titulo: $titulo - Autor: $autor - Anio: $anioPublicacion - genero: $genero - NPag: $numeroPag")
 
     }
-}
+}//clase exclusiva para guardar libros
 
 class Revista(var issn: String, var volumen: String, var numero: Int
   , var editorial: String, autor: String, anioPublicacion: String, titulo: String): Material(titulo, autor, anioPublicacion){
@@ -21,7 +24,7 @@ class Revista(var issn: String, var volumen: String, var numero: Int
         println("Volumen: $volumen - Editorial: $editorial")
     }
 
-}
+}//clase para revistas
 
 class Usuario(var nombre: String, var apellido: String, var edad: Int){
 
@@ -39,19 +42,19 @@ interface ibiblioteca{
 
 class Biblioteca(): ibiblioteca  {
 
-    private val listaDeLibro = mutableListOf<libro>()
-    private val listaDeLibroDisponibles = mutableListOf<libro>()
-    private val listaDeLibroPrestado = mutableListOf<libro>()
-    private val listaDeLibroRevista = mutableListOf<Revista>()
-    private val listaDeRevistaDisponibles = mutableListOf<Revista>()
-    private val listaDeRevistaPrestado = mutableListOf<Revista>()
-    private val listaDeUsuarios = mutableListOf<Usuario>()
-    private val registroPrestamos = mutableMapOf<Material,Usuario>()
+    private val listaDeLibro = mutableListOf<libro>() //lista que tendra todos los libros existentes
+    private val listaDeLibroDisponibles = mutableListOf<libro>() // lista de libro DISPONBIBLES
+    private val listaDeLibroPrestado = mutableListOf<libro>() // Lista de libros prestados
+    private val listaDeLibroRevista = mutableListOf<Revista>() // lsita de revistas
+    private val listaDeRevistaDisponibles = mutableListOf<Revista>() //lista de revistas sin prestar
+    private val listaDeRevistaPrestado = mutableListOf<Revista>() //lista de revistas prestadas
+    private val listaDeUsuarios = mutableListOf<Usuario>() // lista de usuarios
+    private val registroPrestamos = mutableMapOf<Material,Usuario>() //
 
 
     override fun RegistrarMat(eleccion: Int){
 
-        when (eleccion){
+        when (eleccion){//1 para crear libro y 2 para revista
             1 -> {
                 println("Resgistrar Libro")
                 println("Introduce el titulo: ")
@@ -66,7 +69,7 @@ class Biblioteca(): ibiblioteca  {
                 val numeroPag = readln().toIntOrNull() ?: 0
 
                 val nuevoLibro = libro(genero, numeroPag, titulo, autor, anioPublicacion)
-                listaDeLibro.add(nuevoLibro)
+                listaDeLibro.add(nuevoLibro)//agregamos la lista de libros y a la listqa de libros disponibles
                 listaDeLibroDisponibles.add(nuevoLibro)
                 println("Libro: $titulo Registrado")
 
@@ -90,12 +93,12 @@ class Biblioteca(): ibiblioteca  {
 
                 val nuevaRevis = Revista(issn, volumen, numero, editorial, autor, anio, titulo)
 
-                listaDeLibroRevista.add(nuevaRevis)
+                listaDeLibroRevista.add(nuevaRevis)//agregar revista y revista a Disponibles
                 listaDeRevistaDisponibles.add(nuevaRevis)
                 println("Revista: $titulo Registrado")
             }
             else -> {
-                println("Opcion no vlida")
+                println("Opcion no vlida")//validaciones en caso no escojan un valor requerido
             }
         }
 
@@ -110,46 +113,46 @@ class Biblioteca(): ibiblioteca  {
         val anio = readln().toIntOrNull() ?: 0
 
         val nuevoUser = Usuario(nombre,apellido, anio)
-        listaDeUsuarios.add(nuevoUser)
+        listaDeUsuarios.add(nuevoUser) //creacion del nuevo usuario
         println("Registro de usuario extiso")
 
     }
     override fun PrestamoLibro(){
         var usuario: Usuario
         var lbro: libro
-        if(listaDeLibroDisponibles.isEmpty() || listaDeUsuarios.isEmpty()){
+        if(listaDeLibroDisponibles.isEmpty() || listaDeUsuarios.isEmpty()){//verificamos que existan libros y usuarios
             println("usuarios y lista de libros vacio")
         } else{
 
             println("Escoge uno de los usuarios")
             listaDeUsuarios.forEachIndexed {
                 index, x ->
-                println("$index -> ${x.nombre} ${x.apellido}")
+                println("$index -> ${x.nombre} ${x.apellido}")//el usuario que hara el prestamo del libro
             }
 
             var x = readLine()?.toIntOrNull() ?: 0
             if(x in listaDeUsuarios.indices){
                 usuario = listaDeUsuarios[x]
             }else{
-                println("usuario escogido no existe")
+                println("usuario escogido no existe")//validacion en caso se seleccione un usuario no valido
                 return
             }
 
-            listaDeLibroDisponibles.forEachIndexed {
+            listaDeLibroDisponibles.forEachIndexed {//imprimimos toda la lisgta de libros disponiblers creado
                 index, x ->
                 println("$index -> ${x.titulo}")
             }
-            var y = readLine()?.toIntOrNull() ?: 0
+            var y = readLine()?.toIntOrNull() ?: 0//rescatamos la seleccion del usuario
             if(y in listaDeLibroDisponibles.indices){
-                lbro = listaDeLibroDisponibles[y]
+                lbro = listaDeLibroDisponibles[y]//agregamos a la varialbe el objeto seleccionado
             }else{
                 println("libro escogido no existe")
                 return
             }
 
-            listaDeLibroDisponibles.remove(lbro)
-            listaDeLibroPrestado.add(lbro)
-            registroPrestamos[lbro] = usuario
+            listaDeLibroDisponibles.remove(lbro)//eliminamos el libro seleccionado de disponibles
+            listaDeLibroPrestado.add(lbro)//agrgamos ese mismo objeto a prestado
+            registroPrestamos[lbro] = usuario//creeamos el mapa para establecer la relacion entre material prestado y usuaruio
             println("se presto el libro: ${lbro.titulo} a ${registroPrestamos[lbro]?.nombre}")
         }
     }
@@ -157,12 +160,12 @@ class Biblioteca(): ibiblioteca  {
     override fun PrestamoRevista() {
         var usuario: Usuario
         var revista: Revista
-        if(listaDeRevistaDisponibles.isEmpty() || listaDeUsuarios.isEmpty()){
+        if(listaDeRevistaDisponibles.isEmpty() || listaDeUsuarios.isEmpty()){//validacion de existencia de usuario y recvista
             println("usuarios y lista de revista vacios")
         } else{
 
             println("Escoge uno de los usuarios")
-            listaDeUsuarios.forEachIndexed {
+            listaDeUsuarios.forEachIndexed {//imprimimos las revistas
                     index, x ->
                 println("$index -> ${x.nombre} ${x.apellido}")
             }
@@ -184,12 +187,12 @@ class Biblioteca(): ibiblioteca  {
             if(y in listaDeRevistaDisponibles.indices){
                 revista = listaDeRevistaDisponibles[y]
             }else{
-                println("revista escogida no existe")
+                println("revista escogida no existe")// validacion en caso de mala eleccion
                 return
             }
 
-            listaDeRevistaDisponibles.remove(revista)
-            listaDeRevistaPrestado.add(revista)
+            listaDeRevistaDisponibles.remove(revista)//eliminamos la revista de disponibles
+            listaDeRevistaPrestado.add(revista)//agregamos a prestadoos
             registroPrestamos[revista] = usuario
             println("se presto la revista: ${revista.titulo} a ${registroPrestamos[revista]?.nombre}")
         }
@@ -201,23 +204,23 @@ class Biblioteca(): ibiblioteca  {
         println("1. libro")
         println("2. revista")
         var eleccion = readLine()?.toIntOrNull() ?: 0
-        when (eleccion) {
+        when (eleccion) {//indicamos si devolveremos libro o revista
             1 ->{
                 var lbro: libro
-                if(!listaDeLibroPrestado.isEmpty()){
+                if(!listaDeLibroPrestado.isEmpty()){//debe existir prestamos
                     println("Selecciona el libro")
-                    listaDeLibroPrestado.forEachIndexed {
+                    listaDeLibroPrestado.forEachIndexed {//impresion de los prestados
                             index, x ->
                         println("$index -> ${x.titulo}")
                     }
                     var x = readLine()?.toIntOrNull() ?: 0
-                    if(x in listaDeLibroPrestado.indices){
+                    if(x in listaDeLibroPrestado.indices){//verificamos que la seleccion este dentro de las opciones
                         lbro = listaDeLibroPrestado[x]
 
-                        listaDeLibroPrestado.remove(lbro)
+                        listaDeLibroPrestado.remove(lbro)//eliminamos de la lista prestado el objeto seleccionado
                         println("se devolvio el libro ${registroPrestamos[lbro]?.nombre}")
-                        registroPrestamos.remove(lbro)
-                        listaDeLibroDisponibles.add(lbro)
+                        registroPrestamos.remove(lbro)//de igual manera en el mapa
+                        listaDeLibroDisponibles.add(lbro)//agrgamos el libnro a disponible
                     }else{
                         println("Opción no válida")
                     }
@@ -260,14 +263,25 @@ class Biblioteca(): ibiblioteca  {
         println("libros")
         listaDeLibroDisponibles.forEach {
             x ->
-            println("${x.titulo} ${x.autor} ${x.genero}")
+            println("${x.titulo} ${x.autor} ${x.genero}")//mostramos toda la lista de materiales disponibles
+        }
+        println("===Revistas====")
+        listaDeRevistaDisponibles.forEach {
+                x ->
+            println("${x.titulo} ${x.autor} ${x.issn}")//mostramos toda la lista de materiales disponibles
         }
     }
     override fun MostrarMaterialesReservados(){
         println("=======Mostrar los materiales Prestados======")
-        listaDeLibroPrestado.forEach {
+        println("Libros")
+        listaDeLibroPrestado.forEach {//mostramos matreriales prestados
             x ->
             println("${x.titulo} ${x.autor} ${x.genero}")
+        }
+        println("=====Revista======")
+        listaDeRevistaPrestado.forEach {
+                x ->
+            println("${x.titulo} ${x.autor} ${x.issn}")
         }
         println("=====FIN DE MATS PRESTADOS=====")
     }
