@@ -6,26 +6,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
+    android:background="@color/design_default_color_error"
     android:orientation="horizontal"
     tools:context=".MainActivity">
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
+        android:id="@+id/btnIzquierda"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/txtNombreCancion" />
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:text="Prev." />
+
+
+
+    <!-- Contenedor para el botón central y el texto -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btnCentro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Play" />
+
+        <TextView
+            android:id="@+id/txtDebajo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnDerecha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:text="Next" />
 
 
 
