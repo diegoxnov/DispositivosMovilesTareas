@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Interaccion_Img</string>
+    <string name="msg_Hello"> "Holi"</string>
+    <string name="dscripcion_imagen_1">imagen de mi carrito</string>
 </resources>
