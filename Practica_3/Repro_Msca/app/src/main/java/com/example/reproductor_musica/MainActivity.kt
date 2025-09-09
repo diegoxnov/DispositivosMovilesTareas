@@ -12,7 +12,7 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
-
+        //definimos los atributos que usaremos
 
         private lateinit var btnPrev: Button
         private lateinit var btnPlay: Button
@@ -65,12 +65,12 @@ class MainActivity : AppCompatActivity() {
                 changeSong(1)
             }
         }
-
+        //funcion para comenzar la cancion
         private fun startSong() {
             mediaPlayer?.release() // Liberar si había una canción cargada antes
             mediaPlayer = MediaPlayer.create(this, playlist[currentSongIndex])
-            mediaPlayer?.start()
-            btnPlay.text = "Pausa"
+            mediaPlayer?.start() //reproduccion
+            btnPlay.text = "Pausa" // cambiamos a pausa el texto de la cancion
             txtDebajo.text = songNames[currentSongIndex]
 
             // Cuando termine la canción, pasar automáticamente a la siguiente
@@ -78,31 +78,31 @@ class MainActivity : AppCompatActivity() {
                 changeSong(1)
             }
         }
-
+        //pausa de la cancion
         private fun pauseSong() {
             mediaPlayer?.pause()
-            btnPlay.text = "Reproducir"
+            btnPlay.text = "Reproducir"//se cambia el nombre
         }
 
         private fun resumeSong() {
-            mediaPlayer?.start()
-            btnPlay.text = "Pausa"
+            mediaPlayer?.start()//continuar cancion
+            btnPlay.text = "Pausa"//cambiar el texto
         }
 
-        private fun changeSong(direction: Int) {
+        private fun changeSong(direction: Int) {//cambiamos de cancion
             currentSongIndex += direction
 
             // Si te sales de rango, vuelve al inicio o final
-            if (currentSongIndex < 0) currentSongIndex = playlist.size - 1
-            if (currentSongIndex >= playlist.size) currentSongIndex = 0
+            if (currentSongIndex < 0) currentSongIndex = playlist.size - 1 //si se vuelvce negativo si se retrocede desde la primera cancion salta al final de la lista
+            if (currentSongIndex >= playlist.size) currentSongIndex = 0 //caso inverso de la ultima canciona la del inicio
 
             startSong()
         }
 
-        override fun onDestroy() {
+        override fun onDestroy() {//usamnos esta funcion en caso se cierre de manera incorrecta
             super.onDestroy()
-            mediaPlayer?.release()
-            mediaPlayer = null
+            mediaPlayer?.release()//liberamos recursos
+            mediaPlayer = null //dejamos en nulo indicar que no hay canciones
         }
 
 }
