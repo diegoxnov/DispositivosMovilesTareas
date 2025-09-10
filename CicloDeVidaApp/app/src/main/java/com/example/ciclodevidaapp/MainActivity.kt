@@ -35,19 +35,23 @@ class MainActivity : AppCompatActivity() {
     // Completar esto
     override fun onStart() {
         super.onStart()
-        Log.d("MainActivity","onDestroy")
+        Log.d("MainActivity","onStart")
     }
     override fun onResume() {
         super.onResume()
+        Log.d("MainActivity","onResume")
     }
     override fun onPause() {
         super.onPause()
+        Log.d("MainActivity","onPause")
     }
     override fun onStop() {
         super.onStop()
+        Log.d("MainActivity","onStop")
     }
     override fun onDestroy() {
         super.onDestroy()
+        Log.d("MainActivity","onDestroy")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
