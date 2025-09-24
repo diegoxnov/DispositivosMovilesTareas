@@ -1,24 +1,16 @@
 package com.example.editorperfil
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class FormularioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_formulario)
 
-        val btnIniciar = findViewById<Button>(R.id.btnIniciar)
-
-        btnIniciar.setOnClickListener {
-            val intent = Intent(this, FormularioActivity::class.java)
-            startActivity(intent)
-        }
     }
 }

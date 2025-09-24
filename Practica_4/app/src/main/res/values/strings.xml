@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">EditorPerfil</string>
+    <string name="txtNombre">Nombre:</string>
+    <string name="txtEdad">Edad:</string>
+    <string name="hntEdad">23</string>
+    <string name="hntNombre">Diego Nova Rosas</string>
+    <string name="txtCiudad">Ciudad:</string>
+    <string name="hntCiudad">Arequipa</string>
+    <string name="txtCorreo">Correo</string>
+    <string name="hntCorreo">dnovar@ulasalle.edu.pe</string>
+    <string name="btnContinuar">Continuar</string>
+    <string name="txtBienvenido">Bienvenido</string>
+    <string name="btnInicio">Iniciar Sesión</string>
 </resources>
