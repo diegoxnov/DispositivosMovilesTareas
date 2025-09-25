@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class FormularioActivity : AppCompatActivity() {
 
-    private lateinit var txtNombre: EditText
+    private lateinit var txtNombre: EditText//atributos para guardar datos en caso de perdida
     private lateinit var txtEdad: EditText
     private lateinit var txtCiudad: EditText
     private lateinit var txtCorreo: EditText
@@ -66,7 +66,7 @@ class FormularioActivity : AppCompatActivity() {
             //startActivity(enviar)
         }
     }
-    override fun onSaveInstanceState(outState: Bundle) {
+    override fun onSaveInstanceState(outState: Bundle) {//salvar datos en caso de perdida
         super.onSaveInstanceState(outState)
         outState.putString("nombre", txtNombre.text.toString())
         outState.putString("ciudad", txtCiudad.text.toString())
