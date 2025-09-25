@@ -27,11 +27,11 @@ class FormularioActivity : AppCompatActivity() {
             val correo = txtCorreo.text.toString()
 
             val enviar = Intent(this, ResumenActivity::class.java)//le decimos a que activity se dirige el intent
-            enviar.putExtra("Name",nombre)//atributos a enviar
+            enviar.putExtra("NAME",nombre)//atributos a enviar
             enviar.putExtra("YEAR",edad)
             enviar.putExtra("CITY",ciudad)
             enviar.putExtra("CORREO",correo)
-            startActivity(intent)
+            startActivity(enviar)
         }
     }
 }

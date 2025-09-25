@@ -1,6 +1,7 @@
 package com.example.editorperfil
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -12,7 +13,12 @@ class ResumenActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_resumen)
 
-        val txtResult
+        val txtResult = findViewById<TextView>(R.id.txtRNombre)
+        val name = intent.getStringExtra("NAME")
+        val edad = intent.getIntExtra("YEAR", -1)
+        val ciudad = intent.getStringExtra("CITY")
+        val correo = intent.getStringExtra("CORREO")
+        txtResult.text = "Mi nombre es $name $edad $ciudad $correo"
 
     }
 }

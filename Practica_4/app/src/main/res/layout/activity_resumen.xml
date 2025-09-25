@@ -10,10 +10,10 @@
     tools:context=".ResumenActivity">
 
     <TextView
-        android:id="@+id/txtNombre"
+        android:id="@+id/txtRNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hola aqui va el nombre"
+        android:text="@string/txtResNombre"
         />
 
 </LinearLayout>
