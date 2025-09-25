@@ -1,6 +1,7 @@
 package com.example.editorperfil
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +19,12 @@ class ResumenActivity : AppCompatActivity() {
         val edad = intent.getIntExtra("YEAR", -1)
         val ciudad = intent.getStringExtra("CITY")
         val correo = intent.getStringExtra("CORREO")
+        val btn = findViewById<Button>(R.id.btnAtras)
         txtResult.text = "Mi nombre es $name $edad $ciudad $correo"
+
+        btn.setOnClickListener {
+            finish()
+        }
 
     }
 }

@@ -12,4 +12,5 @@
     <string name="txtBienvenido">Bienvenido</string>
     <string name="btnInicio">Iniciar Sesión</string>
     <string name="txtResNombre">nombre user</string>
+    <string name="btnAtras">Atras</string>
 </resources>
