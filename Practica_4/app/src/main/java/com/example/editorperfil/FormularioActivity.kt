@@ -27,7 +27,7 @@ class FormularioActivity : AppCompatActivity() {
             result ->
             if (result.resultCode == RESULT_OK){
                 val data = result.data
-                val msg = data?.getStringExtra("Result")
+                val msg = data?.getStringExtra("RESULT")
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
             }
         }

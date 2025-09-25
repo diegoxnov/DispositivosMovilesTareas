@@ -24,9 +24,9 @@ class ResumenActivity : AppCompatActivity() {
         txtResult.text = "Mi nombre es $name $edad $ciudad $correo"
 
 
-        btn.setOnClickListener {
+        btn.setOnClickListener {//logica despues de hacer click al boton
             val message = Intent()
-            intent.putExtra("RESULT","usuario $name fue registrado de manera exitosa")
+            message.putExtra("RESULT","usuario $name fue registrado de manera exitosa")//enviando la data al formulario
             setResult(RESULT_OK, message)
             finish()
         }
