@@ -43,7 +43,8 @@ class FormularioActivity : AppCompatActivity() {
             enviar.putExtra("YEAR",edad)
             enviar.putExtra("CITY",ciudad)
             enviar.putExtra("CORREO",correo)
-            startActivity(enviar)
+            launcher.launch(enviar)
+            //startActivity(enviar)
         }
     }
 }

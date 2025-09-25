@@ -1,5 +1,6 @@
 package com.example.editorperfil
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -22,7 +23,11 @@ class ResumenActivity : AppCompatActivity() {
         val btn = findViewById<Button>(R.id.btnAtras)
         txtResult.text = "Mi nombre es $name $edad $ciudad $correo"
 
+
         btn.setOnClickListener {
+            val message = Intent()
+            intent.putExtra("RESULT","usuario $name fue registrado de manera exitosa")
+            setResult(RESULT_OK, message)
             finish()
         }
 
