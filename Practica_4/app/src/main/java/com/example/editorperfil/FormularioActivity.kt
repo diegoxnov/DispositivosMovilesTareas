@@ -12,15 +12,34 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class FormularioActivity : AppCompatActivity() {
+
+    private lateinit var txtNombre: EditText
+    private lateinit var txtEdad: EditText
+    private lateinit var txtCiudad: EditText
+    private lateinit var txtCorreo: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_formulario)
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)//atributos del xml
-        val txtNombre = findViewById<EditText>(R.id.txtNombre)
-        val txtEdad = findViewById<EditText>(R.id.txtEdad)
-        val txtCiudad = findViewById<EditText>(R.id.txtCiudad)
-        val txtCorreo = findViewById<EditText>(R.id.txtCorreo)
+         txtNombre = findViewById(R.id.txtNombre)
+         txtEdad = findViewById(R.id.txtEdad)
+         txtCiudad = findViewById(R.id.txtCiudad)
+         txtCorreo = findViewById(R.id.txtCorreo)
+
+
+
+        // Restaurar datos si existen
+        val nombreRest = savedInstanceState?.getString("nombre")
+        val edadRest = savedInstanceState?.getInt("edad")
+        val ciudadRest = savedInstanceState?.getString("ciudad")
+        val correoRest = savedInstanceState?.getString("correo")
+        if (nombreRest != null) txtNombre.setText(nombreRest)
+        if (correoRest != null) txtCorreo.setText(correoRest)
+        if (ciudadRest != null) txtCiudad.setText(ciudadRest)
+        if (edadRest != null) txtEdad.setText(edadRest.toString())
+
 
         //codigo para esperar el resultado de resumen Activity
         val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
@@ -28,13 +47,13 @@ class FormularioActivity : AppCompatActivity() {
             if (result.resultCode == RESULT_OK){
                 val data = result.data
                 val msg = data?.getStringExtra("RESULT")
-                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
             }
         }
 
         btnContinuar.setOnClickListener {
             val nombre = txtNombre.text.toString()//obtenemos los valores de los atributos XML
-            val edad = txtEdad.text.toString().toInt()
+            val edad = txtEdad.text.toString().toIntOrNull() ?: 0
             val ciudad = txtCiudad.text.toString()
             val correo = txtCorreo.text.toString()
 
@@ -47,4 +66,12 @@ class FormularioActivity : AppCompatActivity() {
             //startActivity(enviar)
         }
     }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("nombre", txtNombre.text.toString())
+        outState.putString("ciudad", txtCiudad.text.toString())
+        outState.putString("correo", txtCorreo.text.toString())
+        outState.putInt("edad", txtEdad.text.toString().toIntOrNull() ?: 0)
+    }
+
 }

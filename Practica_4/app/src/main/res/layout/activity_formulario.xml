@@ -21,6 +21,7 @@
         android:id="@+id/txtNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:hint="@string/hntNombre"
         />
     <TextView
@@ -34,6 +35,7 @@
         android:id="@+id/txtEdad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:hint="@string/hntEdad"
         android:width="300px"
         />
@@ -49,6 +51,7 @@
         android:id="@+id/txtCiudad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:hint="@string/hntCiudad"
         android:width="300px"
         />
@@ -64,12 +67,14 @@
         android:id="@+id/txtCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:hint="@string/hntCorreo"
         />
     <Button
         android:id="@+id/btnContinuar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:text="@string/btnContinuar"
         />
 
