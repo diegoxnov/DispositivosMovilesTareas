@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -19,6 +21,16 @@ class FormularioActivity : AppCompatActivity() {
         val txtEdad = findViewById<EditText>(R.id.txtEdad)
         val txtCiudad = findViewById<EditText>(R.id.txtCiudad)
         val txtCorreo = findViewById<EditText>(R.id.txtCorreo)
+
+        //codigo para esperar el resultado de resumen Activity
+        val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result ->
+            if (result.resultCode == RESULT_OK){
+                val data = result.data
+                val msg = data?.getStringExtra("Result")
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+            }
+        }
 
         btnContinuar.setOnClickListener {
             val nombre = txtNombre.text.toString()//obtenemos los valores de los atributos XML
