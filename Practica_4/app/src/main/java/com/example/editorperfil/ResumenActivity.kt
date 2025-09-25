@@ -14,7 +14,7 @@ class ResumenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_resumen)
 
         val txtResult = findViewById<TextView>(R.id.txtRNombre)
-        val name = intent.getStringExtra("NAME")
+        val name = intent.getStringExtra("NAME")//recepcion de datos del formlario activity
         val edad = intent.getIntExtra("YEAR", -1)
         val ciudad = intent.getStringExtra("CITY")
         val correo = intent.getStringExtra("CORREO")
