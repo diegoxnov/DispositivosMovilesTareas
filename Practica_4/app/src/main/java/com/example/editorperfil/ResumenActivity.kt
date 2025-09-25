@@ -12,5 +12,7 @@ class ResumenActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_resumen)
 
+        val txtResult
+
     }
 }
