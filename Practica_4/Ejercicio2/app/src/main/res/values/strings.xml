@@ -3,4 +3,7 @@
     <string name="NotaTitulo">Inserta la Nota</string>
     <string name="ejmContenido">Aqui debes insertar la nota</string>
     <string name="btnInsertar">Compartir</string>
+    <string name="txtNota">Nota no recibida</string>
+    <string name="btnCompCorreo">Compartir por correo</string>
+    <string name="btnEdit">Editar Correo</string>
 </resources>
