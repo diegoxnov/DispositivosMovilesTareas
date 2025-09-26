@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var txtNota: EditText
+    private lateinit var txtNota: EditText//atributo para restauraci[on
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +23,14 @@ class MainActivity : AppCompatActivity() {
         val btnInsert = findViewById<Button>(R.id.btnInsert)
         txtNota = findViewById(R.id.etxtNota)
 
+        //atributos a restaurar
         val notaRestaurado = savedInstanceState?.getString("Nota")
         if (notaRestaurado != null) txtNota.setText(notaRestaurado)
 
-        btnInsert.setOnClickListener {
+        btnInsert.setOnClickListener {//logica despues de hacer click
             val nota = txtNota.text.toString()
 
-            val enviar = Intent(this, OpcionesActivity::class.java)
+            val enviar = Intent(this, OpcionesActivity::class.java)//enviamos el dato a la otra activity
             enviar.putExtra("NOTA", nota)
             startActivity(enviar)
         }
