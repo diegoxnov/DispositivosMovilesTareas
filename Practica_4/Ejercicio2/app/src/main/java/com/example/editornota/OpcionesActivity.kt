@@ -20,7 +20,18 @@ class OpcionesActivity : AppCompatActivity() {
 
         val btnCorreo = findViewById<Button>(R.id.btnCorreo)
         val btnEdit = findViewById<Button>(R.id.btnEdit)
+        txtNota = findViewById(R.id.txtNota)
+
+        //Atributos a restaurar
+        val notaRest = savedInstanceState?.getString("Nota")
+        if (notaRest != null) txtNota.setText(notaRest)
 
 
+
+
+    }
+    override fun onSaveInstanceState(outState: Bundle) {//funcion para recurar el dato
+        super.onSaveInstanceState(outState)
+        outState.putString("Nota", txtNota.text.toString())
     }
 }
