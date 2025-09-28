@@ -8,6 +8,8 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerInicio"
+        android:name="com.example.pedidocomida.InicioFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
