@@ -17,7 +17,6 @@ class InicioFragment : Fragment(R.layout.fragment_inicio) {
         btnPedido.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fragmentContainerInicio, SelecComidaFragment())
-                addToBackStack("DatosComida")
                 commit()
             }
         }
