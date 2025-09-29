@@ -15,4 +15,7 @@
     <string name="Papa">Papa</string>
     <string name="Bebida">Bebida</string>
     <string name="Proceso">Proceso de seleccion</string>
+    <string name="txtPedidoCompleto">Pedido Completo</string>
+    <string name="btnEdit">Editar</string>
+    <string name="btnConfirm">Confirmar</string>
 </resources>
