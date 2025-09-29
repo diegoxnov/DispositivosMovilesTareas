@@ -36,5 +36,9 @@
         android:id="@+id/resumenPedidoFragment"
         android:name="com.example.pedidocomida.ResumenPedidoFragment"
         android:label="fragment_resumen_pedido"
-        tools:layout="@layout/fragment_resumen_pedido" />
+        tools:layout="@layout/fragment_resumen_pedido" >
+        <action
+            android:id="@+id/action_resumenPedidoFragment_to_inicioFragment"
+            app:destination="@id/inicioFragment" />
+    </fragment>
 </navigation>
