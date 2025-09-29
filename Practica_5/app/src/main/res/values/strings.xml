@@ -5,4 +5,7 @@
     <string name="btnPedido">Nuevo pedido</string>
     <string name="txtTitulo">Selecciona la comida que deseas:</string>
     <string name="btnSiguienteExtras">Siguiente</string>
+    <string name="Extra">Agrega un extra</string>
+    <string name="btnExtraNext">Siguiente</string>
+    <string name="btnExtraBack">Atras</string>
 </resources>
