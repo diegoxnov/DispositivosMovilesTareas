@@ -3,4 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btnPedido">Nuevo pedido</string>
+    <string name="txtTitulo">Selecciona la comida que deseas:</string>
+    <string name="btnSiguienteExtras">Siguiente</string>
 </resources>
