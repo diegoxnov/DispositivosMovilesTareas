@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_fragments"
+    app:startDestination="@id/inicioFragment">
+
+    <fragment
+        android:id="@+id/inicioFragment"
+        android:name="com.example.pedidocomida.InicioFragment"
+        android:label="fragment_inicio"
+        tools:layout="@layout/fragment_inicio" >
+        <action
+            android:id="@+id/action_inicioFragment_to_selecComidaFragment"
+            app:destination="@id/selecComidaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selecComidaFragment"
+        android:name="com.example.pedidocomida.SelecComidaFragment"
+        android:label="fragment_selec_comida"
+        tools:layout="@layout/fragment_selec_comida" >
+        <action
+            android:id="@+id/action_selecComidaFragment_to_selecExtrasFragment"
+            app:destination="@id/selecExtrasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selecExtrasFragment"
+        android:name="com.example.pedidocomida.SelecExtrasFragment"
+        android:label="fragment_selec_extras"
+        tools:layout="@layout/fragment_selec_extras" >
+        <action
+            android:id="@+id/action_selecExtrasFragment_to_resumenPedidoFragment"
+            app:destination="@id/resumenPedidoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resumenPedidoFragment"
+        android:name="com.example.pedidocomida.ResumenPedidoFragment"
+        android:label="fragment_resumen_pedido"
+        tools:layout="@layout/fragment_resumen_pedido" />
+</navigation>
