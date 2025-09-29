@@ -16,7 +16,7 @@ class SelecComidaFragment : Fragment(R.layout.fragment_selec_comida) {
 
         btnNext.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragmentContainerInicio, SelecComidaFragment())
+                replace(R.id.fragmentContainerInicio, SelecExtrasFragment())
                 addToBackStack("DatosComida")
                 commit()
             }
