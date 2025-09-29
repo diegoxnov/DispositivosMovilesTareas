@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 
 
+
 class ResumenPedidoFragment : Fragment(R.layout.fragment_resumen_pedido) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,7 +26,7 @@ class ResumenPedidoFragment : Fragment(R.layout.fragment_resumen_pedido) {
         txtPedido.text = "Tu pedido completo: $comida Extra $extra"
         btnConfirm.setOnClickListener {
             Toast.makeText(requireContext(), "PedidoConfirmado", Toast.LENGTH_LONG).show()
-
+            //replace()
 
         }
 
