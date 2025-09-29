@@ -8,4 +8,10 @@
     <string name="Extra">Agrega un extra</string>
     <string name="btnExtraNext">Siguiente</string>
     <string name="btnExtraBack">Atras</string>
+    <string name="Pizza">Pizza</string>
+    <string name="Ensalada">Ensalada</string>
+    <string name="Hamburguesa">Hamburguesa</string>
+    <string name="Postre">Postre</string>
+    <string name="Papa">Papa</string>
+    <string name="Bebida">Bebida</string>
 </resources>

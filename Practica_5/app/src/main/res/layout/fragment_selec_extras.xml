@@ -19,13 +19,44 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.30" />
 
+    <RadioGroup
+        android:id="@+id/radioGroupExtra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintVertical_bias="0.10"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <RadioButton
+            android:id="@+id/rbPostre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Postre" />
+
+        <RadioButton
+            android:id="@+id/rbPapa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Papa" />
+
+        <RadioButton
+            android:id="@+id/rbBebida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:text="@string/Bebida" />
+    </RadioGroup>
+
     <Button
         android:id="@+id/btnExtrasNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btnExtraNext"
 
-        app:layout_constraintVertical_bias="0.30"
+        app:layout_constraintVertical_bias="0.50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -37,7 +68,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btnExtraBack"
 
-        app:layout_constraintVertical_bias="0.30"
+        app:layout_constraintVertical_bias="0.50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 

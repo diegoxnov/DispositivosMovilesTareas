@@ -12,19 +12,51 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txtTitulo"
+        android:layout_margin="10dp"
 
+        app:layout_constraintVertical_bias="0.40"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupComida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguienteComida"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSelecComiida"
+        android:layout_margin="10dp">
+
+        <RadioButton
+            android:id="@+id/rbPizza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Pizza" />
+
+        <RadioButton
+            android:id="@+id/rbHamburguesa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Hamburguesa" />
+
+        <RadioButton
+            android:id="@+id/rbEnsalada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Ensalada" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/btnSiguienteComida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btnSiguienteExtras"
+        android:layout_margin="10dp"
 
-        app:layout_constraintVertical_bias="0.10"
+        app:layout_constraintVertical_bias="0.50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
