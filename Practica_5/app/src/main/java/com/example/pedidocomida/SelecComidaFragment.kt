@@ -32,10 +32,9 @@ class SelecComidaFragment : Fragment(R.layout.fragment_selec_comida) {
                 val extraFragment = SelecExtrasFragment()
                 extraFragment.arguments = datosComida
 
-
-                    replace(R.id.fragmentContainerInicio, extraFragment)
-                    addToBackStack("DatosComida")
-                    commit()
+                replace(R.id.fragmentContainerInicio, extraFragment)
+                addToBackStack("DatosComida")
+                commit()
             }
         }
 
