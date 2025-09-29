@@ -31,7 +31,7 @@ class SelecExtrasFragment : Fragment(R.layout.fragment_selec_extras) {
                     else -> "sin extras"
                 }
 
-                val datosPostreComida = bundleOf("comida" to comida, "postre" to extraSelect)
+                val datosPostreComida = bundleOf("comida" to comida, "extra" to extraSelect)
                 val resumenFragment = ResumenPedidoFragment()
                 resumenFragment.arguments = datosPostreComida
 
