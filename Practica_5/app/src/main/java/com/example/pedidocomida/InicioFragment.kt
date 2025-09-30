@@ -19,10 +19,6 @@ class InicioFragment : Fragment(R.layout.fragment_inicio) {
 
             findNavController().navigate(R.id.action_inicioFragment_to_selecComidaFragment)
 
-//            requireActivity().supportFragmentManager.beginTransaction().apply {
-//                replace(R.id.fragmentContainerInicio, SelecComidaFragment())
-//                commit()
-//            }
         }
 
     }
