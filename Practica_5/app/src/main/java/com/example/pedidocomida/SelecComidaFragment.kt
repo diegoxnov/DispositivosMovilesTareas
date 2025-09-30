@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioGroup
 import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 
 
 class SelecComidaFragment : Fragment(R.layout.fragment_selec_comida) {
@@ -20,7 +21,7 @@ class SelecComidaFragment : Fragment(R.layout.fragment_selec_comida) {
 
         btnNext.setOnClickListener {
 
-            requireActivity().supportFragmentManager.beginTransaction().apply {
+//            requireActivity().supportFragmentManager.beginTransaction().apply {
                 val comidaSelec = when(rgComida.checkedRadioButtonId){
                     R.id.rbEnsalada -> "Ensalada"
                     R.id.rbPizza -> "Pizza"
@@ -29,13 +30,16 @@ class SelecComidaFragment : Fragment(R.layout.fragment_selec_comida) {
                 }
 
                 val datosComida = bundleOf("comida" to comidaSelec)
-                val extraFragment = SelecExtrasFragment()
-                extraFragment.arguments = datosComida
+                findNavController().navigate(R.id.action_selecComidaFragment_to_selecExtrasFragment, datosComida)
 
-                replace(R.id.fragmentContainerInicio, extraFragment)
-                addToBackStack("DatosComida")
-                commit()
-            }
+
+        //                val extraFragment = SelecExtrasFragment()
+//                extraFragment.arguments = datosComida
+
+//                replace(R.id.fragmentContainerInicio, extraFragment)
+//                addToBackStack("DatosComida")
+//                commit()
+            //}
         }
 
     }

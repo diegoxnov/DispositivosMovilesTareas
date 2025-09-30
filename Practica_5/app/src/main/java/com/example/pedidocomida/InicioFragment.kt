@@ -17,12 +17,12 @@ class InicioFragment : Fragment(R.layout.fragment_inicio) {
 
         btnPedido.setOnClickListener {
 
-            findNavController().navigate(R.id.action_selecComidaFragment_to_selecExtrasFragment)
+            findNavController().navigate(R.id.action_inicioFragment_to_selecComidaFragment)
 
-            requireActivity().supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragmentContainerInicio, SelecComidaFragment())
-                commit()
-            }
+//            requireActivity().supportFragmentManager.beginTransaction().apply {
+//                replace(R.id.fragmentContainerInicio, SelecComidaFragment())
+//                commit()
+//            }
         }
 
     }
