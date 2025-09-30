@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
@@ -24,9 +25,9 @@ class SelecExtrasFragment : Fragment(R.layout.fragment_selec_extras) {
         val comida = arguments?.getString("comida") ?: ""// obtenemos la comida del fragment comida
         txtProceso.text = "Tu selección de comida es: $comida"
 
-        setFragmentResultListener("mensaje"){
-            keyResult, bundle ->
-
+        btnBack.setOnClickListener {
+            //volver al fragment anterior para editar comida
+            findNavController().popBackStack()
         }
 
 

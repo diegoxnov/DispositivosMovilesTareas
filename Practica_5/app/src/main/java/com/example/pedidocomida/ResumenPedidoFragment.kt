@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
+import androidx.navigation.fragment.findNavController
 
 
 class ResumenPedidoFragment : Fragment(R.layout.fragment_resumen_pedido) {
@@ -16,8 +18,8 @@ class ResumenPedidoFragment : Fragment(R.layout.fragment_resumen_pedido) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnConfirm = view.findViewById<Button>(R.id.btnConfirmar)
-        val btnEdit = view.findViewById<Button>(R.id.btnEditar)
+        val btnConfirm = view.findViewById<Button>(R.id.btnEditar)
+        val btnEdit = view.findViewById<Button>(R.id.btnConfirmar)
         val txtPedido = view.findViewById<TextView>(R.id.txtPedidoCompleto)
 
         val comida = arguments?.getString("comida") ?: "sin comida"
@@ -25,8 +27,17 @@ class ResumenPedidoFragment : Fragment(R.layout.fragment_resumen_pedido) {
 
         txtPedido.text = "Tu pedido completo: $comida Extra $extra"
         btnConfirm.setOnClickListener {
+
             Toast.makeText(requireContext(), "PedidoConfirmado", Toast.LENGTH_LONG).show()
-            //replace()
+            findNavController().popBackStack(R.id.inicioFragment,false)
+
+        }
+
+        btnEdit.setOnClickListener {
+            // Enviar resultado, SelecComidaFragment reciba la comida a editar
+            val result = bundleOf("comida" to comida)
+            setFragmentResult("editarPedido", result)
+            findNavController().popBackStack(R.id.selecComidaFragment, false)
 
         }
 
