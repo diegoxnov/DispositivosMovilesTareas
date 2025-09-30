@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 
 class InicioFragment : Fragment(R.layout.fragment_inicio) {
@@ -15,6 +16,9 @@ class InicioFragment : Fragment(R.layout.fragment_inicio) {
         val btnPedido = view.findViewById<Button>(R.id.btnNuevoPedido)
 
         btnPedido.setOnClickListener {
+
+            findNavController().navigate(R.id.action_selecComidaFragment_to_selecExtrasFragment)
+
             requireActivity().supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fragmentContainerInicio, SelecComidaFragment())
                 commit()
