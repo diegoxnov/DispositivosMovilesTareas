@@ -21,7 +21,6 @@ class SelecComidaFragment : Fragment(R.layout.fragment_selec_comida) {
 
         btnNext.setOnClickListener {
 
-//            requireActivity().supportFragmentManager.beginTransaction().apply {
                 val comidaSelec = when(rgComida.checkedRadioButtonId){
                     R.id.rbEnsalada -> "Ensalada"
                     R.id.rbPizza -> "Pizza"
@@ -33,13 +32,7 @@ class SelecComidaFragment : Fragment(R.layout.fragment_selec_comida) {
                 findNavController().navigate(R.id.action_selecComidaFragment_to_selecExtrasFragment, datosComida)
 
 
-        //                val extraFragment = SelecExtrasFragment()
-//                extraFragment.arguments = datosComida
 
-//                replace(R.id.fragmentContainerInicio, extraFragment)
-//                addToBackStack("DatosComida")
-//                commit()
-            //}
         }
 
     }
