@@ -11,19 +11,18 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
-
-
+import com.example.pedidocomida.Categoria
 class ResumenPedidoFragment : Fragment(R.layout.fragment_resumen_pedido) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val objCat = Categoria()
         val btnConfirm = view.findViewById<Button>(R.id.btnEditar)
         val btnEdit = view.findViewById<Button>(R.id.btnConfirmar)
         val txtPedido = view.findViewById<TextView>(R.id.txtPedidoCompleto)
 
-        val comida = arguments?.getString("comida") ?: "sin comida"
-        val extra = arguments?.getString("extra") ?: "sin extra"
+        val comida = arguments?.getString(objCat.comida) ?: "sin comida"
+        val extra = arguments?.getString(objCat.extra) ?: "sin extra"
 
         txtPedido.text = "Tu pedido completo: $comida Extra $extra"
         btnConfirm.setOnClickListener {

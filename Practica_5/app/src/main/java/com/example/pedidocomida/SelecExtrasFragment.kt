@@ -12,17 +12,29 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
+import com.example.pedidocomida.Categoria
+
+class TiposExtra{
+    public val papa = "papa"
+    public val bebida = "bebida"
+    public val postre = "postre"
+
+}
+
+
 
 class SelecExtrasFragment : Fragment(R.layout.fragment_selec_extras) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val objTiposExtra = TiposExtra()
+        val objCat = Categoria()
         val btnNext = view.findViewById<Button>(R.id.btnExtrasNext)
         val btnBack = view.findViewById<Button>(R.id.btnExtrasBack)
         val rgExtra = view.findViewById<RadioGroup>(R.id.radioGroupExtra)
         val txtProceso = view.findViewById<TextView>(R.id.textViewProceso)
 
-        val comida = arguments?.getString("comida") ?: ""// obtenemos la comida del fragment comida
+        val comida = arguments?.getString(objCat.comida) ?: ""// obtenemos la comida del fragment comida
         txtProceso.text = "Tu selección de comida es: $comida"
 
         btnBack.setOnClickListener {
@@ -34,9 +46,9 @@ class SelecExtrasFragment : Fragment(R.layout.fragment_selec_extras) {
         btnNext.setOnClickListener {
 
                 val extraSelect = when(rgExtra.checkedRadioButtonId){
-                    R.id.rbPapa -> "papa"
-                    R.id.rbBebida -> "bebida"
-                    R.id.rbPostre -> "postre"
+                    R.id.rbPapa -> objTiposExtra.papa
+                    R.id.rbBebida -> objTiposExtra.bebida
+                    R.id.rbPostre -> objTiposExtra.postre
                     else -> "sin extras"
                 }
 
