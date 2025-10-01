@@ -34,7 +34,7 @@ class ResumenPedidoFragment : Fragment(R.layout.fragment_resumen_pedido) {
 
         btnEdit.setOnClickListener {
             // Enviar resultado, SelecComidaFragment reciba la comida a editar
-            val result = bundleOf("comida" to comida)
+            val result = bundleOf(objCat.comida to comida)
             setFragmentResult("editarPedido", result)
             findNavController().popBackStack(R.id.selecComidaFragment, false)
 

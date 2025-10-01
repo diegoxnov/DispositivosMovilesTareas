@@ -22,7 +22,6 @@ class TiposExtra{
 }
 
 
-
 class SelecExtrasFragment : Fragment(R.layout.fragment_selec_extras) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,7 +51,7 @@ class SelecExtrasFragment : Fragment(R.layout.fragment_selec_extras) {
                     else -> "sin extras"
                 }
 
-                val datosPostreComida = bundleOf("comida" to comida, "extra" to extraSelect)
+                val datosPostreComida = bundleOf(objCat.comida to comida, objCat.extra to extraSelect)
 
                 findNavController().navigate(R.id.action_selecExtrasFragment_to_resumenPedidoFragment, datosPostreComida)
         }

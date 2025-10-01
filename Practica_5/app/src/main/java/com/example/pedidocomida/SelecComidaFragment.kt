@@ -10,18 +10,20 @@ import android.widget.RadioGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
-
+import com.example.pedidocomida.Categoria
 
 class SelecComidaFragment : Fragment(R.layout.fragment_selec_comida) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val objCat = Categoria()
         val btnNext = view.findViewById<Button>(R.id.btnSiguienteComida)
         val rgComida = view.findViewById<RadioGroup>(R.id.radioGroupComida)//obtenemos el valor del xml
 
         // volver Resumen y editar la comida
         setFragmentResultListener("editarPedido") { key, bundle ->
-            val comidaEdit = bundle.getString("comida") ?: " "
+            val comidaEdit = bundle.getString(objCat.comida) ?: " "
 
             when (comidaEdit) {
                 "Ensalada" -> rgComida.check(R.id.rbEnsalada)
@@ -40,7 +42,7 @@ class SelecComidaFragment : Fragment(R.layout.fragment_selec_comida) {
                     else -> "sin comida"
                 }
 
-                val datosComida = bundleOf("comida" to comidaSelec)
+                val datosComida = bundleOf(objCat.comida to comidaSelec)
                 findNavController().navigate(R.id.action_selecComidaFragment_to_selecExtrasFragment, datosComida)
 
 
