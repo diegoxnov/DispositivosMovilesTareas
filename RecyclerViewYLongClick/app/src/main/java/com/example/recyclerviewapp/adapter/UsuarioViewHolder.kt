@@ -35,7 +35,7 @@ class UsuarioViewHolder(view:View): RecyclerView.ViewHolder(view){
             }
         }
 
-        // Long click en todo el itemView
+        // Long click en 
         itemView.setOnLongClickListener {
             val pos = bindingAdapterPosition
             if (pos != RecyclerView.NO_POSITION) {

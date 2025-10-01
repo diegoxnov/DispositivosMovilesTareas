@@ -16,9 +16,11 @@ class UsuarioAdapter(var items:ArrayList<Usuario>): RecyclerView.Adapter<Usuario
 
     override fun onBindViewHolder( holder: UsuarioViewHolder, position: Int) {
         val user = items[position]
-        holder.bind(user){
-            position-> removeUser(position)
-        }
+        holder.bind(
+            user,
+            onDelete = { pos -> removeUser(pos) },
+            onEdit = { pos, updatedUser -> updateUser(pos, updatedUser) }
+        )
     }
 
     override fun getItemCount(): Int = items.size
@@ -33,6 +35,13 @@ class UsuarioAdapter(var items:ArrayList<Usuario>): RecyclerView.Adapter<Usuario
             items.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, getItemCount()-1)
+        }
+    }
+
+    fun updateUser(position: Int, newUser: Usuario) {
+        if (position in items.indices) {
+            items[position] = newUser
+            notifyItemChanged(position)
         }
     }
 
