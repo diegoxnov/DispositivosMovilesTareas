@@ -1,6 +1,8 @@
 package com.example.recyclerviewapp.adapter
 
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -65,34 +67,33 @@ class UsuarioViewHolder(view:View): RecyclerView.ViewHolder(view){
             }
         }
 
-
-        private fun showEditDialog(usuario: Usuario, pos: Int, onEdit: (Int, Usuario) -> Unit) {
-            val context = itemView.context
-            val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit_usuario, null)
-
-            val editNombre = dialogView.findViewById<EditText>(R.id.editNombre)
-            val editEdad = dialogView.findViewById<EditText>(R.id.editEdad)
-            val editCorreo = dialogView.findViewById<EditText>(R.id.editCorreo)
-
-            // valores actuales
-            editNombre.setText(usuario.nombre)
-            editEdad.setText(usuario.edad.toString())
-            editCorreo.setText(usuario.email)
-
-            AlertDialog.Builder(context)
-                .setTitle("Editar usuario")
-                .setView(dialogView)
-                .setPositiveButton("Guardar") { _, _ ->
-                    usuario.nombre = editNombre.text.toString()
-                    usuario.edad = editEdad.text.toString().toIntOrNull() ?: usuario.edad
-                    usuario.email = editCorreo.text.toString()
-                    onEdit(pos, usuario)
-                }
-                .setNegativeButton("Cancelar", null)
-                .show()
-        }
+    }
 
 
+    private fun showEditDialog(usuario: Usuario, pos: Int, onEdit: (Int, Usuario) -> Unit) {
+        val context = itemView.context
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit_usuario, null)
+
+        val editNombre = dialogView.findViewById<EditText>(R.id.editNombre)
+        val editEdad = dialogView.findViewById<EditText>(R.id.editEdad)
+        val editCorreo = dialogView.findViewById<EditText>(R.id.editCorreo)
+
+        // valores actuales
+        editNombre.setText(usuario.nombre)
+        editEdad.setText(usuario.edad.toString())
+        editCorreo.setText(usuario.email)
+
+        AlertDialog.Builder(context)
+            .setTitle("Editar usuario")
+            .setView(dialogView)
+            .setPositiveButton("Guardar") { _, _ ->
+                usuario.nombre = editNombre.text.toString()
+                usuario.edad = editEdad.text.toString().toIntOrNull() ?: usuario.edad
+                usuario.email = editCorreo.text.toString()
+                onEdit(pos, usuario)
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
     }
 
 
