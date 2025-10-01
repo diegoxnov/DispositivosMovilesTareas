@@ -17,57 +17,46 @@ class UsuarioViewHolder(view:View): RecyclerView.ViewHolder(view){
     private val txtCorreo = view.findViewById<TextView>(R.id.txtCorreo)
     private val btnDelete = view.findViewById<ImageButton>(R.id.btnEliminar)
 
-    fun bind(user: Usuario, onDelete: (Int) -> Unit){
+
+    fun bind(
+        user: Usuario,
+        onDelete: (Int) -> Unit,
+        onEdit: (Int, Usuario) -> Unit
+    ){
         txtNombre.text = user.nombre
         txtEdad.text = user.edad.toString()
         txtCorreo.text = user.email
+
+        // Botón eliminar
         btnDelete.setOnClickListener {
             val pos = bindingAdapterPosition
-            if( pos != RecyclerView.NO_POSITION)
-            {
+            if (pos != RecyclerView.NO_POSITION) {
                 onDelete(pos)
             }
         }
-        fun bind(
-            user: Usuario,
-            onDelete: (Int) -> Unit,
-            onEdit: (Int, Usuario) -> Unit
-        ){
-            txtNombre.text = user.nombre
-            txtEdad.text = user.edad.toString()
-            txtCorreo.text = user.email
 
-            // Botón eliminar (ya lo tenías)
-            btnDelete.setOnClickListener {
-                val pos = bindingAdapterPosition
-                if (pos != RecyclerView.NO_POSITION) {
-                    onDelete(pos)
-                }
-            }
-
-            // 🔹 Long click en todo el itemView
-            itemView.setOnLongClickListener {
-                val pos = bindingAdapterPosition
-                if (pos != RecyclerView.NO_POSITION) {
-                    AlertDialog.Builder(itemView.context)
-                        .setTitle("Acción")
-                        .setItems(arrayOf("Editar", "Eliminar")) { _, which ->
-                            when (which) {
-                                0 -> { // Editar
-                                    showEditDialog(user, pos, onEdit)
-                                }
-                                1 -> { // Eliminar
-                                    onDelete(pos)
-                                }
+        // Long click en todo el itemView
+        itemView.setOnLongClickListener {
+            val pos = bindingAdapterPosition
+            if (pos != RecyclerView.NO_POSITION) {
+                AlertDialog.Builder(itemView.context)
+                    .setTitle("Acción")
+                    .setItems(arrayOf("Editar", "Eliminar")) { _, which ->
+                        when (which) {
+                            0 -> { // Editar
+                                showEditDialog(user, pos, onEdit)
+                            }
+                            1 -> { // Eliminar
+                                onDelete(pos)
                             }
                         }
-                        .show()
-                }
-                true
+                    }
+                    .show()
             }
+            true
         }
-
     }
+
 
 
     private fun showEditDialog(usuario: Usuario, pos: Int, onEdit: (Int, Usuario) -> Unit) {
