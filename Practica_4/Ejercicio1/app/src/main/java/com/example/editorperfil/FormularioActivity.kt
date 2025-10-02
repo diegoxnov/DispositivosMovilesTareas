@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+
 class FormularioActivity : AppCompatActivity() {
 
     private lateinit var txtNombre: EditText//atributos para guardar datos en caso de perdida
@@ -29,12 +30,18 @@ class FormularioActivity : AppCompatActivity() {
          txtCorreo = findViewById(R.id.txtCorreo)
 
 
+        //Variables para las llaves de restauraci[on
+        val kNombre = "nombre"
+        val kEdad = "edad"
+        val kCiudad = "ciudad"
+        val kCorreo = "correo"
+
 
         // Restaurar datos si existen
-        val nombreRest = savedInstanceState?.getString("nombre")
-        val edadRest = savedInstanceState?.getInt("edad")
-        val ciudadRest = savedInstanceState?.getString("ciudad")
-        val correoRest = savedInstanceState?.getString("correo")
+        val nombreRest = savedInstanceState?.getString(kNombre)
+        val edadRest = savedInstanceState?.getInt(kEdad)
+        val ciudadRest = savedInstanceState?.getString(kCiudad)
+        val correoRest = savedInstanceState?.getString(kCorreo)
         if (nombreRest != null) txtNombre.setText(nombreRest)
         if (correoRest != null) txtCorreo.setText(correoRest)
         if (ciudadRest != null) txtCiudad.setText(ciudadRest)
@@ -58,10 +65,10 @@ class FormularioActivity : AppCompatActivity() {
             val correo = txtCorreo.text.toString()
 
             val enviar = Intent(this, ResumenActivity::class.java)//le decimos a que activity se dirige el intent
-            enviar.putExtra("NAME",nombre)//atributos a enviar
-            enviar.putExtra("YEAR",edad)
-            enviar.putExtra("CITY",ciudad)
-            enviar.putExtra("CORREO",correo)
+            enviar.putExtra(keyData().keyName,nombre)//atributos a enviar
+            enviar.putExtra(keyData().keyYear,edad)
+            enviar.putExtra(keyData().keyCity,ciudad)
+            enviar.putExtra(keyData().keyCorreo,correo)
             launcher.launch(enviar)
             //startActivity(enviar)
         }
