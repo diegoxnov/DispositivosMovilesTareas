@@ -7,13 +7,14 @@ class PantallaHobbies extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mis Hobbies"),
+        title: const Text("Mis Hobbies"), // Título en la barra superior
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0), // Margen alrededor del contenido
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start, // Alinear elementos a la izquierda
           children: [
+            // Cada hobby se muestra como un Row con ícono y texto
             hobbyItem(Icons.book, "Mirar películas de ficcion"),
             hobbyItem(Icons.videogame_asset, "Jugar videojuegos"),
             hobbyItem(Icons.music_note, "Escuchar mucha música"),
