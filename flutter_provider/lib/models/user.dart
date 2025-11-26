@@ -1,6 +1,6 @@
 class User {
   String nombre;
-  String genero; // 'Masculino' o 'Femenino'
+  String genero;
   bool activo;
   int edad;
   String correo;
