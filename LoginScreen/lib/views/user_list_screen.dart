@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// IMPORTACIONES QUE YA TENÍAS
+
 
 class UserListScreen extends StatelessWidget {
   final String email;
@@ -10,10 +10,9 @@ class UserListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bienvenido: $email'),
+        title: Text('Bienvenido: $email'),//mostramos el ingreso
       ),
 
-      // resto de tu diseño CRUD...
     );
   }
 }

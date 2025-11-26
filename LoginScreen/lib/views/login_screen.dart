@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'user_list_screen.dart'; // Importar LISTA de Actividad anterior
+import 'user_list_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   labelText: 'Contraseña',
                   prefixIcon: Icon(Icons.lock),
                 ),
-                validator: (value) {
+                validator: (value) {//validaciones de contra
                   if (value == null || value.isEmpty) {
                     return 'La contraseña es obligatoria';
                   }
